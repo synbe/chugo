@@ -1,23 +1,86 @@
 baseURL = 'https://chugo.synbe.com/'
-locale = 'en-us'
 title = 'chugo'
-theme = 'ananke'
+theme = 'hugo-theme-cleanwhite'
+languageCode = 'en-us'
+preserveTaxonomyNames = true
+hasCJKLanguage = true
+
+[pagination]
+  pagerSize = 5
 
 [params]
-  author = 'axun'
+  header_image = 'img/home-bg-jeep.jpg'
+  SEOTitle = 'chugo'
   description = '记录技术、思考与沿途的风景'
-  show_reading_time = true
+  slogan = '不求辽阔，但求真诚'
+  upstreamAttribution = false
 
-[menu]
-  [[menu.main]]
-    name = '首页'
-    url = '/'
-    weight = 1
-  [[menu.main]]
-    name = '文章'
-    url = '/posts/'
-    weight = 2
-  [[menu.main]]
-    name = '关于'
-    url = '/about/'
-    weight = 3
+  image_404 = 'img/404-bg.jpg'
+  title_404 = '你来到了没有知识的荒原 :('
+  omit_categories = false
+
+  sidebar_about_description = 'axun 的自留地：技术、思考与沿途的风景'
+  sidebar_avatar = 'img/zhaohuabing.png'
+
+  featured_tags = true
+  featured_condition_size = 1
+
+  algolia_search = false
+
+  disqus_proxy = ''
+  disqus_site = ''
+
+  reward = false
+
+  friends = false
+  bookmarks = false
+  about_me = true
+
+  last_posts = true
+
+  [params.social]
+    rss = true
+    email = '421103218@qq.com'
+    linkedin = ''
+    stackoverflow = ''
+    github = 'https://github.com/synbe'
+    wechat = 'img/wechat_qrcode.jpg'
+
+  [[params.additional_menus]]
+    title = 'ARCHIVE'
+    href = '/archive/'
+  [[params.additional_menus]]
+    title = 'ABOUT'
+    href = '/about/'
+
+[outputFormats.Algolia]
+baseName = 'algolia'
+isPlainText = true
+mediaType = 'application/json'
+notAlternative = true
+
+[params.algolia]
+vars = ['title', 'summary', 'date', 'publishdate', 'expirydate', 'permalink']
+params = ['categories', 'tags']
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 2
+    startLevel = 1
+  [markup.highlight]
+    style = 'dracula'
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\\[', '\\]'], ['$$', '$$']]
+          inline = [['\\(', '\\)']]
+
+[mediaTypes]
+  [mediaTypes.'font/woff']
+    suffixes = ['woff']
+  [mediaTypes.'font/woff2']
+    suffixes = ['woff2']

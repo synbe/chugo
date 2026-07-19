@@ -1,11 +1,11 @@
 # 部署说明（chugo.synbe.com）
 
-本仓库是一个 Hugo 静态站点，主题 ananke，通过 **Cloudflare Pages** 从 GitHub 导入并自动构建发布。
+本仓库是一个 Hugo 静态站点，主题 **hugo-theme-cleanwhite**，通过 **Cloudflare Pages** 从 GitHub 导入并自动构建发布。
 
 ## 技术栈
 
 - 静态生成器：Hugo v0.163.3（extended）
-- 主题：ananke（位于 `themes/ananke`，直接提交进仓库，非 submodule）
+- 主题：hugo-theme-cleanwhite（位于 `themes/hugo-theme-cleanwhite`，直接提交进仓库，非 submodule）
 - 域名：`chugo.synbe.com`（托管于 Cloudflare）
 - 代码仓库：`git@github.com:synbe/chugo.git`，生产分支 `main`
 
@@ -53,18 +53,17 @@ push 到 `main` 分支即触发 Cloudflare 自动重新构建并发布：
 git push origin main
 ```
 
-（本仓库 `main` 与 `master` 指向同一提交，推送两者皆可。）
-
 ## 注意事项
 
-- `themes/ananke` 是纯文件，非 git submodule；主题升级需手动覆盖 `themes/ananke`
+- `themes/hugo-theme-cleanwhite` 是纯文件，非 git submodule；主题升级需手动覆盖
 - `baseURL` 固定为 `https://chugo.synbe.com/`（hugo.toml 第 1 行）
+- 静态资源（图片、CSS、JS）放在 `static/` 目录下，会被自动复制到 `public/`
 
 ## public/ 是什么、为什么忽略
 
 `public/` 是 Hugo 的**构建输出目录**：你写的 Markdown + 主题模板经 `hugo` 编译后，
 生成的纯静态 HTML/CSS/JS 全部落在 `public/`（含 `index.html`、`posts/*/index.html`、
-`ananke/` 静态资源、`index.xml` RSS、`sitemap.xml`、`404.html` 等）。
+`css/`、`js/`、`img/`、`index.xml` RSS、`sitemap.xml`、`404.html` 等）。
 
 用户访问网站时看到的，就是 `public/` 里的文件。
 
@@ -79,18 +78,17 @@ git push origin main
 ## 目录结构速览
 
 ```
-content/      你写的文章（.md）        ← 日常只动这里
-themes/ananke 主题模板与资源（332 文件）← 一般不动
-hugo.toml     站点配置                 ← baseURL / 菜单 / 作者
-static/       静态资源（图片等）
-archetypes/   文章模板（hugo new 用）
-layouts/      自定义模板覆盖位（空，预留）
-assets/       需 Hugo Pipe 处理的资源（空，预留）
-data/ i18n/   数据与多语言（空，预留）
-public/       构建产物（忽略，不入库）
-resources/_gen/ 构建缓存（忽略，不入库）
+content/              你写的文章（.md）        ← 日常只动这里
+themes/hugo-theme-cleanwhite  主题模板与资源          ← 一般不动
+hugo.toml             站点配置                 ← baseURL / 菜单 / 作者 / params
+static/               静态资源（图片、CSS、JS）
+archetypes/           文章模板（hugo new 用）
+layouts/              自定义模板覆盖位（空，预留）
+assets/               需 Hugo Pipe 处理的资源（空，预留）
+data/ i18n/           数据与多语言（空，预留）
+public/               构建产物（忽略，不入库）
+resources/_gen/       构建缓存（忽略，不入库）
 ```
 
 `layouts/ assets/ data/ i18n/` 是 `hugo new site` 生成的空占位骨架，预留给将来自定义，
 空着属正常，git 不跟踪空目录故不影响提交。
-
