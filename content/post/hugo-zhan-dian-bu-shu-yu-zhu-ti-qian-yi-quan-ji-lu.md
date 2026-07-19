@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Hugo 站点部署与主题迁移全记录：从 ananke 到 cleanwhite'
-date: '2026-07-20T04:10:00+08:00'
+date: '2026-07-20T04:05:00+08:00'
 author: 'axun'
 description: 'chugo.synbe.com 部署流程、主题迁移踩坑、Cloudflare Pages 自动部署、日常写作发布全流程记录'
 tags:
