@@ -38,6 +38,8 @@ hasCJKLanguage = true
 
   last_posts = true
 
+  custom_css = ['css/custom.css']
+
   [params.social]
     rss = true
     email = '421103218@qq.com'
@@ -45,8 +47,6 @@ hasCJKLanguage = true
     stackoverflow = ''
     github = 'https://github.com/synbe'
     wechat = 'img/wechat_qrcode.jpg'
-
-  custom_css = ['css/custom.css']
 
   [[params.additional_menus]]
     title = 'ARCHIVE'
