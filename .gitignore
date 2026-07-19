@@ -1,6 +1,9 @@
 # Hugo 构建产物
 /public/
 
+# Hugo 资源处理缓存(图片缩放/CSS 打包等)
+/resources/_gen/
+
 # 主题原始 zip 残留
 /ananke-main.zip
 
