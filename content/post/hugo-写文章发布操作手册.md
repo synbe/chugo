@@ -10,6 +10,7 @@ tags:
   - 工作流
 categories:
   - 技术
+slug: hugo-xie-wen-zhang-fa-bu-cao-shou-ce
 draft: false
 ---
 
