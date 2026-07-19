@@ -1,0 +1,44 @@
+/* Waline 评论系统字号调整 */
+#waline {
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+#waline .wl-count {
+  font-size: 0.9rem !important;
+}
+
+#waline .wl-comment-content {
+  font-size: 1rem !important;
+  line-height: 1.7 !important;
+}
+
+#waline .wl-comment-header {
+  font-size: 0.9rem !important;
+}
+
+#waline .wl-comment-footer {
+  font-size: 0.85rem !important;
+}
+
+#waline .wl-reply-box {
+  font-size: 1rem !important;
+}
+
+#waline .wl-input {
+  font-size: 1rem !important;
+}
+
+#waline .wl-textarea {
+  font-size: 1rem !important;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  #waline {
+    font-size: 0.95rem !important;
+  }
+  #waline .wl-comment-content {
+    font-size: 0.95rem !important;
+  }
+}

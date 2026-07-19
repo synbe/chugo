@@ -46,6 +46,8 @@ hasCJKLanguage = true
     github = 'https://github.com/synbe'
     wechat = 'img/wechat_qrcode.jpg'
 
+  custom_css = ['css/custom.css']
+
   [[params.additional_menus]]
     title = 'ARCHIVE'
     href = '/archive/'
