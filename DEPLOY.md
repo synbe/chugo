@@ -58,6 +58,39 @@ git push origin main
 ## 注意事项
 
 - `themes/ananke` 是纯文件，非 git submodule；主题升级需手动覆盖 `themes/ananke`
-- `public/` 为构建产物，已在 `.gitignore` 中忽略，不入库
 - `baseURL` 固定为 `https://chugo.synbe.com/`（hugo.toml 第 1 行）
-- 菜单含「关于」页（`/about/`），对应内容文件 `content/about.md` 尚未创建，访问会 404
+
+## public/ 是什么、为什么忽略
+
+`public/` 是 Hugo 的**构建输出目录**：你写的 Markdown + 主题模板经 `hugo` 编译后，
+生成的纯静态 HTML/CSS/JS 全部落在 `public/`（含 `index.html`、`posts/*/index.html`、
+`ananke/` 静态资源、`index.xml` RSS、`sitemap.xml`、`404.html` 等）。
+
+用户访问网站时看到的，就是 `public/` 里的文件。
+
+本仓库已用 Cloudflare Pages 部署，流程是：**Cloudflare 从 GitHub 拉源码，在云端自己跑
+`hugo --gc --minify` 生成它自己的 `public/`，再发布**。因此本地 `public/` 不会被用到，
+也不应入库——它是可由源码 100% 重新生成的产物。存进 git 只会带来冗余与潜在的产物/云端
+不一致冲突，故已在 `.gitignore` 中忽略。
+
+若要本地查看效果，跑 `hugo server`（直接预览）或 `hugo`（生成 public/）即可；
+不需要时 `rm -rf public` 删掉也不影响任何流程，下次构建会自动再生。
+
+## 目录结构速览
+
+```
+content/      你写的文章（.md）        ← 日常只动这里
+themes/ananke 主题模板与资源（332 文件）← 一般不动
+hugo.toml     站点配置                 ← baseURL / 菜单 / 作者
+static/       静态资源（图片等）
+archetypes/   文章模板（hugo new 用）
+layouts/      自定义模板覆盖位（空，预留）
+assets/       需 Hugo Pipe 处理的资源（空，预留）
+data/ i18n/   数据与多语言（空，预留）
+public/       构建产物（忽略，不入库）
+resources/_gen/ 构建缓存（忽略，不入库）
+```
+
+`layouts/ assets/ data/ i18n/` 是 `hugo new site` 生成的空占位骨架，预留给将来自定义，
+空着属正常，git 不跟踪空目录故不影响提交。
+
