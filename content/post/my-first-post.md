@@ -1,4 +1,5 @@
 ---
+layout: post
 title: '始于一隅'
 date: '2026-07-19T20:31:47+08:00'
 author: 'axun'

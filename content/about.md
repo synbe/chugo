@@ -1,4 +1,5 @@
 ---
+layout: post
 title: '关于'
 date: '2026-07-19T21:30:00+08:00'
 author: 'axun'
