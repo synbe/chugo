@@ -1,4 +1,4 @@
-baseURL = 'https://ghugo.synbe.com/'
+baseURL = 'https://chugo.synbe.com/'
 locale = 'en-us'
 title = 'chugo'
 theme = 'ananke'
