@@ -1,4 +1,30 @@
 <div id="waline"></div>
+<style>
+/* Waline 评论系统字号调整 - 直接注入，优先级最高 */
+:root { --waline-font-size: 1rem; }
+[data-waline] { font-size: 1rem !important; line-height: 1.7 !important; }
+[data-waline] .wl-card .wl-content { font-size: 1rem !important; line-height: 1.8 !important; }
+[data-waline] .wl-card .wl-head,
+[data-waline] .wl-card .wl-time,
+[data-waline] .wl-card .wl-nick { font-size: 0.9rem !important; }
+[data-waline] .wl-count { font-size: 1rem !important; }
+[data-waline] .wl-editor,
+[data-waline] .wl-input,
+[data-waline] .wl-textarea { font-size: 1rem !important; line-height: 1.6 !important; }
+[data-waline] .wl-reply-box { font-size: 1rem !important; }
+[data-waline] .wl-comment-actions .wl-btn { font-size: 0.85rem !important; }
+[data-waline] .wl-card .wl-meta { font-size: 0.85rem !important; }
+[data-waline] .wl-power { font-size: 0.75rem !important; }
+[data-waline] .wl-empty,
+[data-waline] .wl-loading { font-size: 1rem !important; }
+[data-waline] .wl-emoji-popup { font-size: 1rem !important; }
+@media (max-width: 768px) {
+  [data-waline] { font-size: 0.95rem !important; }
+  [data-waline] .wl-card .wl-content { font-size: 0.95rem !important; line-height: 1.7 !important; }
+  [data-waline] .wl-editor,
+  [data-waline] .wl-input { font-size: 0.95rem !important; }
+}
+</style>
 <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
 <script type="module">
     import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
