@@ -92,3 +92,50 @@ resources/_gen/       构建缓存（忽略，不入库）
 
 `layouts/ assets/ data/ i18n/` 是 `hugo new site` 生成的空占位骨架，预留给将来自定义，
 空着属正常，git 不跟踪空目录故不影响提交。
+
+## 主题迁移记录（2026-07-19）：从 ananke 迁移到 hugo-theme-cleanwhite
+
+### 迁移步骤
+1. 从 GitHub clone 主题到 `themes/hugo-theme-cleanwhite/`
+2. 清理主题自带的 `.git` 目录（避免嵌套仓库）
+3. 复制 `exampleSite/static/*` 到站点 `static/`（图片、CSS、JS、字体等静态资源）
+4. 修改 `hugo.toml`：
+   - `theme = 'hugo-theme-cleanwhite'`
+   - 按 `exampleSite/hugo.toml` 调整 `[params]`、`[params.social]`、`[[params.additional_menus]]` 等配置
+   - 关闭不需要的功能：`algolia_search = false`、`reward = false`、`friends = false` 等
+5. 文章 front matter 适配 cleanwhite：
+   - 必须加 `layout: post`
+   - 目录由 `content/posts/` 改为 `content/post/`（匹配主题 URL 结构 `/post/...`）
+   - `description` 字段用于首页摘要，`subtitle` 可选
+6. 重新构建验证，推送触发 Cloudflare Pages 自动部署
+
+### 坑点与经验
+- **主题必须放在 `themes/<name>/`**，不能放在任意目录（Hugo 查找主题只在 `themes/` 下）
+- **cleanwhite 要求文章 `layout: post`**，否则首页不显示文章列表
+- **URL 路径区分大小写**：主题用 `/post/...`，所以内容目录必须是 `content/post/`
+- **静态资源需手动复制**：主题 `exampleSite/static/` 下的图片、CSS、JS、字体必须复制到站点 `static/`，否则构建成功但页面缺样式/图片
+- **Cloudflare Pages 构建失败不代表站点挂了**：GitHub Actions 可能因 Hugo 版本/缓存失败，但 Cloudflare Pages 用本地 Hugo 0.163.3 部署成功，线上站点正常
+- **主题自带 `.git` 一定要删**，否则会形成嵌套仓库，提交报错或被忽略
+
+### 日后新增文章模板
+```bash
+hugo new content post/文章名.md
+```
+编辑 front matter 必须包含：
+```yaml
+---
+layout: post
+title: '文章标题'
+date: 'YYYY-MM-DDTHH:MM:SS+08:00'
+author: 'axun'
+description: '首页显示的摘要'
+tags:
+  - 标签1
+  - 标签2
+categories:
+  - 分类
+draft: false
+---
+```
+
+一键发布：`./git2github.sh`（需在 `main` 分支运行）
