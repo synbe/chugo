@@ -1,82 +1,49 @@
-/* Waline 评论系统字号调整 */
+/* Waline 评论系统字号调整 - 覆盖 CSS 变量 */
 :root {
   --waline-font-size: 1rem;
 }
 
-/* 强制覆盖 Waline 根字号 */
 [data-waline] {
   font-size: 1rem !important;
   line-height: 1.7 !important;
 }
 
-/* 评论内容 */
-[data-waline] .wl-card .wl-content {
+[data-waline] .wl-comment-content {
   font-size: 1rem !important;
   line-height: 1.8 !important;
 }
 
-/* 评论头部（作者、时间） */
-[data-waline] .wl-card .wl-head,
-[data-waline] .wl-card .wl-time,
-[data-waline] .wl-card .wl-nick {
+[data-waline] .wl-comment-header {
+  font-size: 0.95rem !important;
+}
+
+[data-waline] .wl-comment-footer {
   font-size: 0.9rem !important;
 }
 
-/* 评论计数 */
-[data-waline] .wl-count {
-  font-size: 1rem !important;
-}
-
-/* 回复框、输入框 */
-[data-waline] .wl-editor,
+[data-waline] .wl-reply-box,
 [data-waline] .wl-input,
 [data-waline] .wl-textarea {
   font-size: 1rem !important;
-  line-height: 1.6 !important;
 }
 
-/* 回复框 */
-[data-waline] .wl-reply-box {
-  font-size: 1rem !important;
+[data-waline] .wl-count {
+  font-size: 1.2rem !important;
 }
 
-/* 评论操作按钮 */
-[data-waline] .wl-comment-actions .wl-btn {
+[data-waline] .wl-info {
   font-size: 0.85rem !important;
-}
-
-/* 评论元信息 */
-[data-waline] .wl-card .wl-meta {
-  font-size: 0.85rem !important;
-}
-
-/* 页脚信息 */
-[data-waline] .wl-power {
-  font-size: 0.75rem !important;
-}
-
-/* 加载/空状态 */
-[data-waline] .wl-empty,
-[data-waline] .wl-loading {
-  font-size: 1rem !important;
-}
-
-/* 表情弹窗 */
-[data-waline] .wl-emoji-popup {
-  font-size: 1rem !important;
 }
 
 /* 移动端适配 */
 @media (max-width: 768px) {
+  :root {
+    --waline-font-size: 0.95rem;
+  }
   [data-waline] {
     font-size: 0.95rem !important;
   }
-  [data-waline] .wl-card .wl-content {
-    font-size: 0.95rem !important;
-    line-height: 1.7 !important;
-  }
-  [data-waline] .wl-editor,
-  [data-waline] .wl-input {
+  [data-waline] .wl-comment-content {
     font-size: 0.95rem !important;
   }
 }
