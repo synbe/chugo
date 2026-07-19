@@ -42,7 +42,7 @@ jobs:
 
       - name: Build with Hugo
         run: |
-          hugo --gc --minify --baseURL "https://chugo.synbe.com/"
+          hugo --gc --minify --baseURL "https://ghugo.synbe.com/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
