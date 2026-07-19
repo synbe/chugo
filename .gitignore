@@ -1,0 +1,8 @@
+# Hugo 构建产物
+/public/
+
+# 主题原始 zip 残留
+/ananke-main.zip
+
+# Hugo 构建锁
+.hugo_build.lock

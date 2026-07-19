@@ -1,0 +1,4 @@
+baseURL = 'https://chugo.synbe.com/'
+locale = 'en-us'
+title = 'chugo'
+theme = 'ananke'
