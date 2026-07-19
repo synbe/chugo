@@ -1,5 +1,36 @@
 <div id="waline"></div>
 <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
+<style>
+  /* 强制覆盖 Waline 字号 - 最高优先级内联样式 */
+  [data-waline] {
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
+  }
+  [data-waline] .wl-card .wl-content {
+    font-size: 1rem !important;
+    line-height: 1.8 !important;
+  }
+  [data-waline] .wl-comment-header,
+  [data-waline] .wl-time,
+  [data-waline] .wl-nick {
+    font-size: 0.95rem !important;
+  }
+  [data-waline] .wl-editor,
+  [data-waline] .wl-input,
+  [data-waline] .wl-textarea {
+    font-size: 1rem !important;
+  }
+  [data-waline] .wl-count {
+    font-size: 1.2rem !important;
+  }
+  [data-waline] .wl-info {
+    font-size: 0.85rem !important;
+  }
+  @media (max-width: 768px) {
+    [data-waline] { font-size: 0.95rem !important; }
+    [data-waline] .wl-comment-content { font-size: 0.95rem !important; }
+  }
+</style>
 <script type="module">
     import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
     init({
