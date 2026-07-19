@@ -3,8 +3,13 @@ set -euo pipefail
 
 echo "----- 准备提交本目录所有改动到 main -----"
 
-# 确保在 main 分支
-git checkout main
+# 防护：必须在 main 分支上运行，否则报错退出（避免误切分支丢失改动）
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+if [ "$current_branch" != "main" ]; then
+  echo "错误：当前在 '$current_branch' 分支，本脚本只提交 main。"
+  echo "请先执行：git checkout main"
+  exit 1
+fi
 
 # 拉取远程更新（仅快进，遇分歧直接报错，避免意外 merge）
 git pull --ff-only origin main || { echo "pull 失败：本地与远程存在分歧，请手动解决后再运行"; exit 1; }
